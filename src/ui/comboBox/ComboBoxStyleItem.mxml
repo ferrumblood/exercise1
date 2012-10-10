@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="400" height="300">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<mx:ComboBox id="comboBox1"
+				 rowCount="10"
+				 width="200"
+				 textIndent="5"
+				 selectedIndex="0"
+				 prompt="">
+		<mx:dataProvider>
+			<fx:Array>
+				<fx:Object label="Общий" icon="@Embed('assets/comboBox/common.png')" />
+				<fx:Object label="Числовой" icon="@Embed('assets/comboBox/number.png')" />
+				<fx:Object label="Денежный" icon="@Embed('assets/comboBox/money.png')" />
+				<fx:Object label="Финансовый" icon="@Embed('assets/comboBox/finance.png')"/>
+				<fx:Object label="Краткая дата" icon="@Embed('assets/comboBox/shortDate.png')" />
+				<fx:Object label="Длинный формат даты" icon="@Embed('assets/comboBox/longDate.png')"/>
+				<fx:Object label="Время" icon="@Embed('assets/comboBox/time.png')" />
+				<fx:Object label="Процентный" icon="@Embed('assets/comboBox/percent.png')"/>
+				<fx:Object label="Дробный" icon="@Embed('assets/comboBox/subdivision.png')"/>
+				<fx:Object label="Экспотенциальный" icon="@Embed('assets/comboBox/exp.png')"/>
+				<fx:Object label="Текстовый" icon="@Embed('assets/comboBox/common.png')"/>
+			</fx:Array>
+		</mx:dataProvider>
+	</mx:ComboBox>	
+</s:Group>
