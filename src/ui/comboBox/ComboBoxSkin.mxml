@@ -2,7 +2,7 @@
 
 <s:SparkSkin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" 
         xmlns:fb="http://ns.adobe.com/flashbuilder/2009"
-		height="20"
+		height="21"
 		xmlns:comboBox="ui.comboBox.*"> 
     
     <!-- host component -->
@@ -20,35 +20,88 @@
         <s:State name="open" />
         <s:State name="disabled" />
     </s:states>
-    
-    <s:PopUpAnchor id="popUp"  displayPopUp.normal="false" displayPopUp.open="true" includeIn="open"
+	
+    <s:PopUpAnchor id="popUp"  displayPopUp.normal="false" width="240" displayPopUp.open="true" includeIn="open"
                    left="0" right="0" top="0" bottom="0" itemDestructionPolicy="auto"
                    popUpPosition="below" popUpWidthMatchesAnchorWidth="false">
         
         <s:Group id="dropDown">
            
             <!-- fill -->
-            <s:Rect id="background" left="1" right="1" top="1" bottom="1" radiusX="5" radiusY="5">
+            <s:Rect id="background" left="1" right="1" top="1" bottom="1" radiusX="0" radiusY="0" width="220">
 				<s:filters>
-					<s:DropShadowFilter blurX="60" blurY="80" alpha=".29" distance="30" angle="90" color="0x000000"/>
+					<s:DropShadowFilter blurX="2" blurY="2" alpha=".25" distance="5" angle="45" color="0x000000"/>
 				</s:filters>
                 <s:fill>
-                    <s:SolidColor id="bgFill" color="0xffffff" alpha=".95"/>
+                    <s:SolidColor id="bgFill" color="#fafafa"  alpha="1"/>
                 </s:fill>
             </s:Rect>
-            
-                <s:DataGroup top="10" bottom="5" id="dataGroup" itemRenderer="ui.comboBox.ComboBoxItemRenderer">
-                    <s:layout>
-                        <s:VerticalLayout gap="0" horizontalAlign="contentJustify" requestedMinRowCount="1" requestedMaxRowCount="11"/>
-                    </s:layout>
-                </s:DataGroup> 
+            	
+			<s:VGroup gap="1">
+				<s:Rect id="borderTop" width="100%" right="0" top="0" bottom="0" height="1">
+					<s:fill>
+						<s:SolidColor color="#919191"  alpha="1"/>
+					</s:fill>
+				</s:Rect>
+				
+			<s:HGroup gap="0">
+				
+				<s:DataGroup left="10" top="1" bottom="1" id="dataGroup" clipAndEnableScrolling="true" itemRenderer="ui.comboBox.ComboBoxItemRenderer">
+
+					<s:layout>
+
+						<s:VerticalLayout requestedRowCount="10" gap="0" horizontalAlign="contentJustify" requestedMinRowCount="1" requestedMaxRowCount="12"/>
+					</s:layout>
+					
+				</s:DataGroup>
+				
+				<s:VScrollBar skinClass="ui.comboBox.ComboBoxBarSkin"
+							  viewport="{dataGroup}" 
+							  left="{dataGroup.x + dataGroup.width + 10}" 
+							  top="10" 
+							  height="{dataGroup.height}"
+							  width="12"
+							  />
+			</s:HGroup>
+			
+				<s:Rect width="100%" height="1" right="0" top="0" bottom="0">
+					<s:fill>
+						<s:SolidColor color="#c7c7c7" />
+					</s:fill>
+				</s:Rect>
+				
+				<s:Button id="otherFormatButton" label="Другие числовые форматы..." width = "230" height="25" right="0" top="0" bottom="0" focusEnabled="false"
+						  skinClass="ui.comboBox.ComboBoxOtherFormatButtonSkin" tabEnabled="false" /> 
+				
+				
+				
+				<s:Rect id="borderBottom" width="100%" right="0" top="0" bottom="0" height="1">
+					<s:fill>
+						<s:SolidColor color="#919191"  alpha="1"/>
+					</s:fill>
+				</s:Rect>
+				
+			</s:VGroup>
+			<s:Rect id="borderLeft" left="0" top="0" bottom="0" width="1">
+				<s:fill>
+					<s:SolidColor color="#919191"  alpha="1"/>
+				</s:fill>
+			</s:Rect>
+			<s:Rect id="borderRight" right="0" top="0" bottom="0" width="1">
+				<s:fill>
+					<s:SolidColor color="#919191"  alpha="1"/>
+				</s:fill>
+			</s:Rect>
+			
+
         </s:Group>
     </s:PopUpAnchor>
     
-    <s:Button id="openButton" width="15" right="0" top="0" bottom="0" focusEnabled="false"
-              skinClass="ui.comboBox.ComboBoxButtonSkin" tabEnabled="false" />  
-    <comboBox:ComboBoxTextInput id="textInput" enabled.disabled="false"
-                 left="0" right="14" top="0" bottom="0"/> 
-    
+    <s:Button id="openButton" width="13" right="0" top="0" bottom="0" focusEnabled="false"
+              skinClass="ui.comboBox.ComboBoxButtonSkin" tabEnabled="false" />
+	
+    <comboBox:ComboBoxTextInput id="textInput" enabled.disabled="false" height="23"
+                 left="0" right="12" top="0" bottom="0"/> 
+
 </s:SparkSkin>
 

@@ -2,7 +2,7 @@
 <s:ItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
 				xmlns:s="library://ns.adobe.com/flex/spark" 
 				xmlns:mx="library://ns.adobe.com/flex/mx" 
-				height="17"
+				height="50"
 				rollOver="{currentState = 'hovered'}"
 				rollOut="{currentState = 'normal'}"
 				autoDrawBackground="false">
@@ -11,17 +11,41 @@
 		<s:State name="hovered"/>
 	</s:states>
 	
-	<s:Rect includeIn="hovered" left="0" right="0" top="0" bottom="0">
+	
+	<s:Rect id="border" width="100%" left ="2" right="0" top="0" bottom="0"  height="100%" radiusX="4">
 		<s:fill>
-			<s:SolidColor color="0x4676f8"/>
+			<s:SolidColor 
+				color.hovered="#dbce99"  alpha.hovered=".5"
+				color.normal="#fafafa"  alpha.normal=".5"/>
 		</s:fill>
 	</s:Rect>
 	
-	<mx:Label text="{data.@name}"
-			  fontSize="11"
-			  fontWeight="bold" />
-	<mx:Label text="{data.@abbrev}"
-			  fontSize="9"
-			  paddingLeft="10" />
+	<s:BitmapImage scaleMode="stretch" left="3" right="1" bottom="1" top="1"
+				   source.hovered="@Embed('assets/icons/comboBox/comboboxItemGradient-over.png')"
+				   />
+	
+	<s:HGroup paddingLeft="7" paddingTop="10" gap="10" width="210">
+		<s:BitmapImage scaleMode="stretch" 
+					   left="3" right="1" 
+					   bottom="1" top="1" 
+					   source="{data.image}" />
+		
+		<s:VGroup>
+		<s:Label text="{data.label}" fontSize="11" verticalCenter="0"
+				 left="53" right="44"
+				 color="#00156e" 
+				 fontWeight="bold"/>
+		
+		<s:Label text="{data.name}" fontSize="11" verticalCenter="0"
+				 left="53" right="44"
+				 color="#00156e" 
+				 />
+		</s:VGroup>
+		   
+	</s:HGroup>
+
+			 
+		
+			 
 	
 </s:ItemRenderer>

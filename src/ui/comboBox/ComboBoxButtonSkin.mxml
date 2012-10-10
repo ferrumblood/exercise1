@@ -3,7 +3,7 @@
 <s:SparkButtonSkin xmlns:fx="http://ns.adobe.com/mxml/2009" 
              xmlns:s="library://ns.adobe.com/flex/spark" 
              xmlns:fb="http://ns.adobe.com/flashbuilder/2009"
-			 
+			 height="21"
              alpha.disabled="0.5">
      
     <fx:Metadata>
@@ -17,29 +17,34 @@
     
     <!-- states -->
     <s:states>
+		
         <s:State name="up" />
         <s:State name="over" />
         <s:State name="down" />
         <s:State name="disabled" />
+		<s:State name="overTextInput"/>
     </s:states>
-    
-	<s:Rect width="1" left="0" top="0" bottom="0">
+	
+	<s:Rect width="10" right="0" top="0" bottom="0">
 		<s:fill>
-			<s:SolidColor color="0x888888" color.over="0x679bdc" color.down="0x4775ac"/>
+			<s:SolidColor color.up="0x888888" color.down="0x9b9b9b" color.over="0x666d77" color.overTextInput="0x666d77" />
 		</s:fill>
 	</s:Rect>
-	
-	<s:BitmapImage scaleMode="stretch" left="1" right="1" bottom="0" top="0"
-				   source.up="@Embed('assets/skinParts/comboboxButtonGradient.png')"
-				   source.over="@Embed('assets/skinParts/comboboxButtonGradient-over.png')"
-				   source.down="@Embed('assets/skinParts/comboboxButtonGradient-down.png')"
-					/>
+
+	<s:BitmapImage scaleMode="stretch" left="1" right="1" bottom="0"  top="0"
+				   source.up="@Embed('assets/icons/comboBox/comboboxButton-up.png')"
+				   source.down="@Embed('assets/icons/comboBox/comboboxButton-down.png')"
+				   source.over="@Embed('assets/icons/comboBox/comboboxButton-over.png')"
+				   source.overTextInput="@Embed('assets/icons/comboBox/comboboxButton-over.png')"
+				   />
 	
 	<s:Rect width="1" right="0" top="0" bottom="0">
 		<s:fill>
 			<s:SolidColor color.up="0x888888" color.over="0x9b9b9b" color.down="0x666d77"/>
 		</s:fill>
 	</s:Rect>
+	
+
     
 	<!-- layer 7: arrow -->
 	<!--- The arrow graphic displayed in the anchor button. -->

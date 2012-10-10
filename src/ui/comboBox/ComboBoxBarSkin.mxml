@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<s:SparkSkin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:fb="http://ns.adobe.com/flashbuilder/2009" minWidth="12" minHeight="35" 
+    alpha.disabled="0.5" alpha.inactive="0.5" xmlns:manageableButton="ui.manageableButton.*" >
+
+    <fx:Metadata>
+    <![CDATA[ 
+        /** 
+         * @copy spark.skins.spark.ApplicationSkin#hostComponent
+         */
+        [HostComponent("spark.components.VScrollBar")]
+    ]]>
+    </fx:Metadata> 
+	
+	<fx:Script>
+		<![CDATA[
+			protected function button_mouseOverHandler(event:MouseEvent):void
+			{
+				changeButtonState("over");
+				
+			}
+			private function changeButtonState(state2Change:String = ""):void {
+				incrementButton.currentButtonState = decrementButton.currentButtonState = thumb.currentButtonState = state2Change;
+				incrementButton.invalidateSkinState();
+				decrementButton.invalidateSkinState();
+				thumb.invalidateSkinState();
+			}
+			
+			protected function button_mouseOutHandler(event:MouseEvent):void
+			{
+				changeButtonState();
+				
+			}
+			
+			protected function button_mouseDownHandler(event:MouseEvent):void
+			{
+				var button:ManageableButton = event.currentTarget as ManageableButton;
+				button.currentButtonState = "";
+				button.invalidateSkinState();
+				
+			}
+			
+		]]>
+	</fx:Script>
+	
+	
+	<!--
+		NOTE: this skin file contains sub-parts that may continue to react to
+		Style code.  To remove this behavior create new copies of those skins
+		and remove the styles.
+	-->
+    <s:states>
+        <s:State name="normal" />
+        <s:State name="disabled" />
+        <s:State name="inactive" />
+    </s:states>
+   
+	
+		
+	
+    <!---  The default skin class is VScrollBarTrackSkin.  
+            @copy spark.components.supportClasses.TrackBase#track 
+            @see spark.skins.spark.VScrollBarTrackSkin -->
+    <s:Button id="track" top="16" bottom="15" height="54"
+              focusEnabled="false" tabEnabled="false"
+              skinClass="ui.comboBox.ComboBoxSliderSkin" />
+    
+    <!--- The default skin class is VScrollBarThumbSkin.
+            @copy spark.components.supportClasses.TrackBase#thumb 
+            @see spark.skins.spark.VScrollBarThumbSkin -->
+    
+    
+    <!--- The default skin class is ScrollBarUpButtonSkin. 
+            @copy spark.components.supportClasses.ScrollBarBase#decrementButton 
+            @see spark.skins.spark.ScrollBarUpButtonSkin -->
+   <!-- <s:Button id="decrementButton" top="0" enabled.inactive="false"
+              focusEnabled="false" tabEnabled="false"
+              skinClass="ui.comboBox.VSScrollBarButtonUpSkin" />
+    -->
+	
+    <!---  The default skin class is ScrollBarDownButtonSkin. 
+            @copy spark.components.supportClasses.ScrollBarBase#incrementButton
+            @see spark.skins.spark.ScrollBarDownButtonSkin -->
+   <!-- <s:Button id="incrementButton" bottom="0" enabled.inactive="false"
+              focusEnabled="false" tabEnabled="false"
+              skinClass="ui.comboBox.VSScrollBarButtonDownSkin" />
+	-->
+	<manageableButton:ManageableButton
+		id="decrementButton" 
+		top="0"
+		enabled.inactive="false"
+		focusEnabled="false" tabEnabled="false"
+		skinClass="ui.comboBox.ComboBoxBarButtonUpSkin"
+		mouseOver="button_mouseOverHandler(event)"
+		mouseOut="button_mouseOutHandler(event)" 
+		mouseDown="button_mouseDownHandler(event)"/>
+	
+	
+	<manageableButton:ManageableButton
+		id="incrementButton" 
+		bottom="0" enabled.inactive="false"
+		focusEnabled="false" tabEnabled="false"
+		
+		skinClass="ui.comboBox.ComboBoxBarButtonDownSkin"
+		mouseOver="button_mouseOverHandler(event)"
+		mouseOut="button_mouseOutHandler(event)" 
+		mouseDown="button_mouseDownHandler(event)"/>
+	
+	<manageableButton:ManageableButton
+		id="thumb" 
+		focusEnabled="false" visible.inactive="false" tabEnabled="false"
+		skinClass="ui.comboBox.ComboBoxBarThumbSkin" 
+		mouseOver="button_mouseOverHandler(event)"
+		mouseOut="button_mouseOutHandler(event)" 
+		mouseDown="button_mouseDownHandler(event)"/>
+	
+	
+	<!--<s:Button id="thumb" 
+			  focusEnabled="false" visible.inactive="false" tabEnabled="false"
+			  skinClass="ui.comboBox.VSScrollBarThumbSkin" />
+	-->
+	
+</s:SparkSkin>

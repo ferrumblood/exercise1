@@ -17,8 +17,9 @@
 			{
 				super.stylesInitialized();
 				this.setStyle("unfocusedTextSelectionColor","#c6c6c6");
-				this.setStyle("focusedTextSelectionColor", "#c6c6c6");
+				this.setStyle("focusedTextSelectionColor", "#75c1ff");
 				this.setStyle("inactiveTextSelectionColor","#c6c6c6");
+				
 			};
 			
         ]]>

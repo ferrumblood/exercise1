@@ -1,14 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
 			   xmlns:s="library://ns.adobe.com/flex/spark" 
-			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600" xmlns:comboBox="ui.comboBox.*" xmlns:tabBar="ui.tabBar.*" xmlns:footerButtonBar="ui.footerButtonBar.*" xmlns:iconButton="ui.iconButton.*" xmlns:nsSlider="ui.nsSlider.*">
+			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="1024" minHeight="768" 
+			   xmlns:comboBox="ui.comboBox.*"
+			   xmlns:manageableButton="ui.manageableButton.*">
+	
 	<fx:Declarations>
-		<!-- Place non-visual elements (e.g., services, value objects) here -->		
+		<s:ArrayList id="comboBoxList">
+			<fx:Object image="assets/icons/comboBox/common.png" label="Общий" />
+			<fx:Object image="assets/icons/comboBox/number.png" label="Числовой" />
+			<fx:Object image="assets/icons/comboBox/money.png" label="Денежный" />
+			<fx:Object image="assets/icons/comboBox/finance.png" label="Финансовый" />
+			<fx:Object image="assets/icons/comboBox/shortDate.png" label="Краткая дата" />
+			<fx:Object image="assets/icons/comboBox/longDate.png" label="Длинный формат даты" />
+			<fx:Object image="assets/icons/comboBox/time.png" label="Время" />
+			<fx:Object image="assets/icons/comboBox/percent.png" label="Процентный" />
+			<fx:Object image="assets/icons/comboBox/subdivision.png" label="Дробный" />
+			<fx:Object image="assets/icons/comboBox/exp.png" label="Экспоненциальный" />
+			<fx:Object image="assets/icons/comboBox/text.png" label="Текстовый" />
+		</s:ArrayList>
 	</fx:Declarations>
 	
-	<comboBox:ComboBoxStyleItem x="100" y="40" id="comboBoxStyleItem"/>
+	<s:VGroup x="10" y="10" height="40">
+		<comboBox:ComboBox 
+			prompt="Формат не указан"
+			selectedIndex="0"
+			width="127" 
+			verticalCenter="0" 
+			dataProvider="{comboBoxList}" 
+			/> 
 		
-		
-	
-	
+	</s:VGroup>
 </s:Application>
