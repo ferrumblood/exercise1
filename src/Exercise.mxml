@@ -72,13 +72,20 @@
 	</fx:Declarations>
 	
 	<s:VGroup x="10" y="10" height="40">
-		<comboBox:ComboBox 
-			prompt="Формат не указан"
-			selectedIndex="0"
-			verticalCenter="0" 
-			width="127" 
-			dataProvider="{comboBoxList}" 
-			/> 
+		
+		<s:HGroup x="10" y="10" width="400">
+			<comboBox:ComboBox 
+				prompt="Формат не указан"
+				selectedIndex="0"
+				verticalCenter="0" 
+				width="127" 
+				dataProvider="{comboBoxList}" 
+				/> 
+			
+			<s:ButtonBar requireSelection="false" x="300" y="10" skinClass="ui.ribbonButtonBar.RibbonButtonBarSkin" dataProvider="{new ArrayCollection(['1','2','3'])}"/>
+			
+		</s:HGroup>
+		
 		
 		<s:DataGrid id="table" 
 					requestedRowCount="10" 
@@ -108,6 +115,7 @@
 			
 		</s:DataGrid>
 		
+		
 		<s:Group width="220" height="25" >
 			<s:BitmapImage 
 				id="backGroundZoomSlider" 
@@ -122,6 +130,5 @@
 			</s:HGroup>
 		</s:Group>
 		
-		<s:ButtonBar requireSelection="false" skinClass="ui.ribbonButtonBar.RibbonButtonBarSkin" dataProvider="{new ArrayCollection(['1','2','3'])}"/>
-	</s:VGroup>
+		</s:VGroup>
 </s:Application>
