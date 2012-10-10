@@ -122,5 +122,6 @@
 			</s:HGroup>
 		</s:Group>
 		
+		<s:ButtonBar requireSelection="false" skinClass="ui.ribbonButtonBar.RibbonButtonBarSkin" dataProvider="{new ArrayCollection(['1','2','3'])}"/>
 	</s:VGroup>
 </s:Application>
