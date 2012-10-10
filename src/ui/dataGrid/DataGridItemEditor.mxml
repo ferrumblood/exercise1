@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:GridItemEditor xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				  xmlns:s="library://ns.adobe.com/flex/spark" 
+				  xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%">
+
+	<fx:Script>
+		<![CDATA[
+			import flashx.textLayout.formats.BackgroundColor;
+			import spark.events.GridEvent;
+			
+			override public function set value(newValue:Object):void {
+				ti.text =  newValue.toString();
+			}
+			
+			override public function get value():Object {
+				return ti.text;
+			}
+			
+			override public function setFocus():void {
+				ti.setFocus();
+			}
+		
+			protected function ti_keyDownHandler(event:KeyboardEvent):void
+			{
+				if(event.charCode== Keyboard.ENTER)
+				{
+					dataGrid.endItemEditorSession(false);
+					dataGrid.startItemEditorSession(dataGrid.selectedCell.rowIndex+1,dataGrid.selectedCell.columnIndex);
+					dataGrid.setSelectedCell(dataGrid.selectedCell.rowIndex+1,dataGrid.selectedCell.columnIndex);
+				}
+			}
+		]]>
+	</fx:Script>
+	
+	<s:TextInput id="ti" width="100%" height="100%"
+					  skinClass="ui.dataGrid.DataGridTextInputSkin"
+					  borderVisible="false"
+					  focusAlpha="0"
+					  blendMode="normal"
+					  keyDown="ti_keyDownHandler(event)" />
+
+</s:GridItemEditor>

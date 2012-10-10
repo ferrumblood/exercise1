@@ -5,6 +5,38 @@
 			   xmlns:comboBox="ui.comboBox.*"
 			   xmlns:manageableButton="ui.manageableButton.*">
 	
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.controls.Text;
+			import spark.events.GridEvent;
+			import spark.events.GridItemEditorEvent;
+			import spark.events.GridSelectionEvent;
+			import spark.layouts.RowAlign;
+			
+			[Bindable]
+			private var Items:ArrayCollection = new ArrayCollection([
+				{A:"",B:"",C:"",D:"",E:""},
+				{A:"",B:"",C:"",D:"",E:""},
+				{A:"",B:"",C:"",D:"",E:""},
+				{A:"",B:"",C:"",D:"",E:""},
+				{A:"",B:"",C:"",D:"",E:""},
+				{A:"",B:"",C:"",D:"",E:""},
+				{A:"",B:"",C:"",D:"",E:""},
+				{A:"",B:"",C:"",D:"",E:""},
+				{A:"",B:"",C:"",D:"",E:""},
+				{A:"",B:"",C:"",D:"",E:""}     
+			]);       
+			
+			
+			protected function dataGrid_gridClickHandler(event:GridEvent):void
+			{
+				table.startItemEditorSession(event.rowIndex, event.columnIndex);
+			}
+			
+		]]>
+	</fx:Script>
+	
 	<fx:Declarations>
 		<s:ArrayList id="comboBoxList">
 			<fx:Object image="assets/icons/comboBox/common.png" label="Общий" />
@@ -25,10 +57,38 @@
 		<comboBox:ComboBox 
 			prompt="Формат не указан"
 			selectedIndex="0"
-			width="127" 
 			verticalCenter="0" 
+			width="127" 
 			dataProvider="{comboBoxList}" 
 			/> 
+		
+		<s:DataGrid id="table" 
+					requestedRowCount="10" 
+					selectionMode="multipleCells"
+					requireSelection="true"
+					dataProvider="{Items}"
+					sortableColumns="false"
+					caretColor="0x000000"
+					selectionColor="0xffffff"
+					rollOverColor="0xffffff"
+					editable="true"
+					skinClass="ui.dataGrid.MyTableDataGridSkin"
+					itemRenderer="ui.dataGrid.DataGridItemRenderer"
+					
+					gridClick="dataGrid_gridClickHandler(event)"
+					
+					>
+			<s:columns>
+				<s:ArrayList>
+					<s:GridColumn width="70" headerText="A" dataField="A" itemEditor="ui.dataGrid.DataGridItemEditor" />
+					<s:GridColumn width="70" headerText="B" dataField="B" itemEditor="ui.dataGrid.DataGridItemEditor"/>
+					<s:GridColumn width="70" headerText="C" dataField="C" itemEditor="ui.dataGrid.DataGridItemEditor"/>
+					<s:GridColumn width="70" headerText="D" dataField="D" itemEditor="ui.dataGrid.DataGridItemEditor"/>
+					<s:GridColumn width="70" headerText="E" dataField="E" itemEditor="ui.dataGrid.DataGridItemEditor"/>
+				</s:ArrayList>
+			</s:columns>
+			
+		</s:DataGrid>
 		
 	</s:VGroup>
 </s:Application>
