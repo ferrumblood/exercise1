@@ -34,6 +34,24 @@
 				table.startItemEditorSession(event.rowIndex, event.columnIndex);
 			}
 			
+			protected function zoomSlider_changeHandler(event:Event):void
+			{
+				// Change scale
+				
+			}
+			
+			protected function zommOut_clickHandler(event:MouseEvent):void
+			{
+				// Zoom Out
+				zoomSlider.value-=10;
+			}
+			
+			protected function zommIn_clickHandler(event:MouseEvent):void
+			{
+				// Zoom In
+				zoomSlider.value+=10;
+			}
+			
 		]]>
 	</fx:Script>
 	
@@ -89,6 +107,20 @@
 			</s:columns>
 			
 		</s:DataGrid>
+		
+		<s:Group width="220" height="25" >
+			<s:BitmapImage 
+				id="backGroundZoomSlider" 
+				height="100%" width="220" 
+				scaleMode="stretch" 
+				source="@Embed('assets/icons/slider/backgroundSlider.png')"/>
+			<s:HGroup top="1" left="2" gap="0">
+				<s:Button left="0" label="{Math.round(zoomSlider.value) + '%'}" height="17" width="42" fontSize="11" verticalCenter="1" skinClass="ui.nsSlider.NSSliderButtonZoomSkin" /> 
+				<s:Button id="zommOut" left="0" right="0" top="0" bottom="0" width="17" height="17" tabEnabled="false" skinClass="ui.nsSlider.NSSliderZoomOutButton" click="zommOut_clickHandler(event)" /> 
+				<s:HSlider id="zoomSlider" value="200" skinClass="ui.nsSlider.NSSliderSkin" width="100" minimum="10" maximum="400" verticalCenter="0" change="zoomSlider_changeHandler(event)" /> 
+				<s:Button id="zommIn" left="0" right="0" top="0" bottom="0" width="17" height="17" tabEnabled="false" skinClass="ui.nsSlider.NSSliderZoomInButton" click="zommIn_clickHandler(event)" /> 
+			</s:HGroup>
+		</s:Group>
 		
 	</s:VGroup>
 </s:Application>
