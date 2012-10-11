@@ -16,76 +16,37 @@
 			
 			[Bindable]
 			private var Items:ArrayCollection = new ArrayCollection([
-				{A:"",B:"",C:"",D:"",E:""},
-				{A:"",B:"",C:"",D:"",E:""},
-				{A:"",B:"",C:"",D:"",E:""},
-				{A:"",B:"",C:"",D:"",E:""},
-				{A:"",B:"",C:"",D:"",E:""},
-				{A:"",B:"",C:"",D:"",E:""},
-				{A:"",B:"",C:"",D:"",E:""},
-				{A:"",B:"",C:"",D:"",E:""},
-				{A:"",B:"",C:"",D:"",E:""},
-				{A:"",B:"",C:"",D:"",E:""}     
+				{name:1, A:"",B:"",C:"",D:"",E:"",F:"",G:"",H:"",I:""},
+				{name:2, A:"",B:"",C:"",D:"",E:"",F:"",G:"",H:"",I:""},
+				{name:3, A:"",B:"",C:"",D:"",E:"",F:"",G:"",H:"",I:""},
+				{name:4, A:"",B:"",C:"",D:"",E:"",F:"",G:"",H:"",I:""},
+				{name:5, A:"",B:"",C:"",D:"",E:"",F:"",G:"",H:"",I:""},
+				{name:6, A:"",B:"",C:"",D:"",E:"",F:"",G:"",H:"",I:""},
+				{name:7, A:"",B:"",C:"",D:"",E:"",F:"",G:"",H:"",I:""},
+				{name:8, A:"",B:"",C:"",D:"",E:"",F:"",G:"",H:"",I:""},
+				{name:9, A:"",B:"",C:"",D:"",E:"",F:"",G:"",H:"",I:""},
+				{name:10, A:"",B:"",C:"",D:"",E:"",F:"",G:"",H:"",I:""}     
 			]);       
 			
 			
 			protected function dataGrid_gridClickHandler(event:GridEvent):void
 			{
-				table.startItemEditorSession(event.rowIndex, event.columnIndex);
+				if(event.columnIndex>0)
+					table.startItemEditorSession(event.rowIndex, event.columnIndex);
 			}
 			
-			protected function zoomSlider_changeHandler(event:Event):void
+			private function dataGrid_selectionChangingHandler(event:GridSelectionEvent):void
 			{
-				// Change scale
-				
-			}
-			
-			protected function zommOut_clickHandler(event:MouseEvent):void
-			{
-				// Zoom Out
-				zoomSlider.value-=10;
-			}
-			
-			protected function zommIn_clickHandler(event:MouseEvent):void
-			{
-				// Zoom In
-				zoomSlider.value+=10;
+				var index:int = event.selectionChange.columnIndex;
+				if (index==0)
+					event.preventDefault();
 			}
 			
 		]]>
 	</fx:Script>
 	
-	<fx:Declarations>
-		<s:ArrayList id="comboBoxList">
-			<fx:Object image="assets/icons/comboBox/common.png" label="Общий" />
-			<fx:Object image="assets/icons/comboBox/number.png" label="Числовой" />
-			<fx:Object image="assets/icons/comboBox/money.png" label="Денежный" />
-			<fx:Object image="assets/icons/comboBox/finance.png" label="Финансовый" />
-			<fx:Object image="assets/icons/comboBox/shortDate.png" label="Краткая дата" />
-			<fx:Object image="assets/icons/comboBox/longDate.png" label="Длинный формат даты" />
-			<fx:Object image="assets/icons/comboBox/time.png" label="Время" />
-			<fx:Object image="assets/icons/comboBox/percent.png" label="Процентный" />
-			<fx:Object image="assets/icons/comboBox/subdivision.png" label="Дробный" />
-			<fx:Object image="assets/icons/comboBox/exp.png" label="Экспоненциальный" />
-			<fx:Object image="assets/icons/comboBox/text.png" label="Текстовый" />
-		</s:ArrayList>
-	</fx:Declarations>
 	
-	<s:VGroup x="10" y="10" height="40">
-		
-		<s:HGroup x="10" y="10" width="400">
-			<comboBox:ComboBox 
-				prompt="Формат не указан"
-				selectedIndex="0"
-				verticalCenter="0" 
-				width="127" 
-				dataProvider="{comboBoxList}" 
-				/> 
-			
-			<s:ButtonBar requireSelection="false" x="300" y="10" skinClass="ui.ribbonButtonBar.RibbonButtonBarSkin" dataProvider="{new ArrayCollection(['1','2','3'])}"/>
-			
-		</s:HGroup>
-		
+	<s:VGroup x="300" y="100" height="40">	
 		
 		<s:DataGrid id="table" 
 					requestedRowCount="10" 
@@ -96,39 +57,26 @@
 					caretColor="0x000000"
 					selectionColor="0xffffff"
 					rollOverColor="0xffffff"
-					editable="true"
 					skinClass="ui.dataGrid.MyTableDataGridSkin"
 					itemRenderer="ui.dataGrid.DataGridItemRenderer"
-					
 					gridClick="dataGrid_gridClickHandler(event)"
-					
+					selectionChanging="dataGrid_selectionChangingHandler(event)"
 					>
 			<s:columns>
 				<s:ArrayList>
-					<s:GridColumn width="70" headerText="A" dataField="A" itemEditor="ui.dataGrid.DataGridItemEditor" />
-					<s:GridColumn width="70" headerText="B" dataField="B" itemEditor="ui.dataGrid.DataGridItemEditor"/>
-					<s:GridColumn width="70" headerText="C" dataField="C" itemEditor="ui.dataGrid.DataGridItemEditor"/>
-					<s:GridColumn width="70" headerText="D" dataField="D" itemEditor="ui.dataGrid.DataGridItemEditor"/>
-					<s:GridColumn width="70" headerText="E" dataField="E" itemEditor="ui.dataGrid.DataGridItemEditor"/>
+					<s:GridColumn minWidth="25" width="25"  sortable="false" dataField="name"  headerRenderer="ui.dataGrid.DataGridLeftTopItemRenderer" itemRenderer="ui.dataGrid.DataGridRowNameRenderer"/>
+					<s:GridColumn width="62" headerText="A" dataField="A" itemEditor="ui.dataGrid.DataGridItemEditor" />
+					<s:GridColumn width="62" headerText="B" dataField="B" itemEditor="ui.dataGrid.DataGridItemEditor"/>
+					<s:GridColumn width="62" headerText="C" dataField="C" itemEditor="ui.dataGrid.DataGridItemEditor"/>
+					<s:GridColumn width="62" headerText="D" dataField="D" itemEditor="ui.dataGrid.DataGridItemEditor"/>
+					<s:GridColumn width="62" headerText="E" dataField="E" itemEditor="ui.dataGrid.DataGridItemEditor"/>
+					<s:GridColumn width="62" headerText="F" dataField="F" itemEditor="ui.dataGrid.DataGridItemEditor"/>
+					<s:GridColumn width="62" headerText="G" dataField="G" itemEditor="ui.dataGrid.DataGridItemEditor"/>
+					<s:GridColumn width="62" headerText="H" dataField="H" itemEditor="ui.dataGrid.DataGridItemEditor"/>
+					<s:GridColumn width="62" headerText="I" dataField="I" itemEditor="ui.dataGrid.DataGridItemEditor"/>
 				</s:ArrayList>
 			</s:columns>
 			
 		</s:DataGrid>
-		
-		
-		<s:Group width="220" height="25" >
-			<s:BitmapImage 
-				id="backGroundZoomSlider" 
-				height="100%" width="220" 
-				scaleMode="stretch" 
-				source="@Embed('assets/icons/slider/backgroundSlider.png')"/>
-			<s:HGroup top="1" left="2" gap="0">
-				<s:Button left="0" label="{Math.round(zoomSlider.value) + '%'}" height="17" width="42" fontSize="11" verticalCenter="1" skinClass="ui.nsSlider.NSSliderButtonZoomSkin" /> 
-				<s:Button id="zommOut" left="0" right="0" top="0" bottom="0" width="17" height="17" tabEnabled="false" skinClass="ui.nsSlider.NSSliderZoomOutButton" click="zommOut_clickHandler(event)" /> 
-				<s:HSlider id="zoomSlider" value="200" skinClass="ui.nsSlider.NSSliderSkin" width="100" minimum="10" maximum="400" verticalCenter="0" change="zoomSlider_changeHandler(event)" /> 
-				<s:Button id="zommIn" left="0" right="0" top="0" bottom="0" width="17" height="17" tabEnabled="false" skinClass="ui.nsSlider.NSSliderZoomInButton" click="zommIn_clickHandler(event)" /> 
-			</s:HGroup>
-		</s:Group>
-		
 		</s:VGroup>
 </s:Application>

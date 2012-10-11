@@ -32,10 +32,10 @@
 	</s:Rect>
 
 	<s:BitmapImage scaleMode="stretch" left="1" right="1" bottom="0"  top="0"
-				   source.up="@Embed('assets/icons/comboBox/comboboxButton-up.png')"
-				   source.down="@Embed('assets/icons/comboBox/comboboxButton-down.png')"
-				   source.over="@Embed('assets/icons/comboBox/comboboxButton-over.png')"
-				   source.overTextInput="@Embed('assets/icons/comboBox/comboboxButton-over.png')"
+				   source.up="@Embed('assets/icons/comboBox/comboBoxButton-up.png')"
+				   source.down="@Embed('assets/icons/comboBox/comboBoxButton-down.png')"
+				   source.over="@Embed('assets/icons/comboBox/comboBoxButton-over.png')"
+				   source.overTextInput="@Embed('assets/icons/comboBox/comboBoxButton-over.png')"
 				   />
 	
 	<s:Rect width="1" right="0" top="0" bottom="0">

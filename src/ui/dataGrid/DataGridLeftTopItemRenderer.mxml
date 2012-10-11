@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:DefaultGridHeaderRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+							 xmlns:s="library://ns.adobe.com/flex/spark" 
+							 xmlns:mx="library://ns.adobe.com/flex/mx"
+							 >
+	
+	<s:states>
+		<s:State name="normal" />
+		<s:State name="hovered" />
+		<s:State name="down" />
+	</s:states>      
+	
+	<s:Rect width="100%" left="0" right="0" top="0" bottom="0">
+		<s:fill>
+			<s:SolidColor color.normal="#9eb6ce"
+						  color.hovered="#879fb7"
+						  color.down="#ffffff"/>
+		</s:fill>
+	</s:Rect>
+	
+	<!--- @private -->
+	<s:BitmapImage scaleMode="stretch" left="0" right="0" bottom="0" top="0"
+				   source.normal="@Embed('assets/icons/DataGrid/dataGridLeftTopCorn-normal.png')"
+				   source.hovered="@Embed('assets/icons/DataGrid/dataGridLeftTopCorn-hovered.png')"
+				   source.down="@Embed('assets/icons/DataGrid/dataGridLeftTopCorn-hovered.png')"
+				   />
+</s:DefaultGridHeaderRenderer>
