@@ -12,7 +12,42 @@
 			{
 				var str:String = data[column.dataField];
 				enabled=true;
-				lblData.text = data[column.dataField];
+				if(str.length>0)
+				{
+					if(str.charAt(0)=='=')
+					{
+						if(str.length==4)
+						{
+							if((!isNaN(Number(str.charAt(1))))&&!isNaN(Number(str.charAt(3)))&&(str.charAt(2)=='+'||str.charAt(2)=='-'||str.charAt(2)=='*'||str.charAt(2)=='/'))// если строка в формате: число знак число 
+							{
+								if(str.charAt(2)=='+')
+								{
+									lblData.text=(Number(str.charAt(1))+ Number(str.charAt(3))).toString();
+								}
+								if(str.charAt(2)=='-')
+								{
+									lblData.text=(Number(str.charAt(1))- Number(str.charAt(3))).toString();
+								}
+								if(str.charAt(2)=='*')
+								{
+									lblData.text=(Number(str.charAt(1))* Number(str.charAt(3))).toString();
+								}
+								if(str.charAt(2)=='/')
+								{
+									lblData.text=(Number(str.charAt(1))/ Number(str.charAt(3))).toFixed(2);
+								}
+							}
+							else
+								lblData.text="#NAME?";
+						}
+						else
+							lblData.text="#NAME?";
+					}
+					else
+						lblData.text = data[column.dataField];
+				}
+				else 
+					lblData.text = data[column.dataField];
 			}
 			
 		]]>

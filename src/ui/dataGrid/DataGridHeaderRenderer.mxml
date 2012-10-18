@@ -6,7 +6,7 @@
 		<s:State name="normal" />
 		<s:State name="hovered" />
 		<s:State name="down" />
-	</s:states>      
+	</s:states>
 	
 	<s:Rect width="100%" left="0" right="0" top="0" bottom	="0">
 		<s:fill>
